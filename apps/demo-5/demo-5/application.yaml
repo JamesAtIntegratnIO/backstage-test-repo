@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-5
+  namespace: argocd
+  labels:
+    app: demo-5
+  annotations: 
+    # argocd-image-updater.argoproj.io/write-back-method: kustomization
+    # argocd-image-updater.argoproj.io/git-branch: main
+    # argocd-image-updater.argoproj.io/image-list: python-sample-app
+spec:
+  project: infra
+  source:
+    repoURL: https://github.com/jamesatintegratnio/backstage-test-repo
+    targetRevision: HEAD
+    path: apps/demo-5/demo-5
+  destination:
+    name: in-cluster
+    namespace: demo-5
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

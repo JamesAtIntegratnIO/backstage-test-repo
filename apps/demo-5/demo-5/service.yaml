@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-5
+  namespace: demo-5
+  labels:
+    app: demo-5
+spec:
+  selector:
+    app: demo-5
+  ports:
+  - name: http
+    protocol: TCP
+    port: 5000
+    targetPort: 5000
