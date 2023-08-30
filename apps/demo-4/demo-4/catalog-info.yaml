@@ -14,3 +14,5 @@ spec:
   type: service
   owner: user:guest
   lifecycle: experimental
+  dependsOn:
+    - component/python-sample-app
