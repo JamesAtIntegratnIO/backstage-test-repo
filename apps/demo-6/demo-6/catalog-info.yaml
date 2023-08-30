@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demo-6
+  labels:
+    app: demo-6
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: demo-6
+    backstage.io/kubernetes-label-selector: app=demo-6
+    argocd/app-name: demo-6
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental

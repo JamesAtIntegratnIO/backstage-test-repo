@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-6
+  namespace: demo-6
+  labels:
+    app: demo-6
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-6
+  template:
+    metadata:
+      labels:
+        app: demo-6
+    spec:
+      containers:
+      - name: demo-6
+        image: registry.k8s.integratn.tech/python-sample-app:latest
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: 200m
+          requests:
+            memory: 128Mi
+            cpu: 100m
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: demo-6-pvc
+          mountPath: /app/data
+      volumes:
+      - name: demo-6-pvc
+        persistentVolumeClaim:
+          claimName: demo-6-pvc
