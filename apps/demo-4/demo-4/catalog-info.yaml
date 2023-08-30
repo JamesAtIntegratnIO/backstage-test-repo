@@ -9,6 +9,7 @@ metadata:
     backstage.io/kubernetes-id: demo-4
     backstage.io/kubernetes-label-selector: app=demo-4
     argocd/app-name: demo-4
+    github.com/project-slug: JamesAtIntegratnIO/backstage-test-repo
 spec:
   type: service
   owner: user:guest
