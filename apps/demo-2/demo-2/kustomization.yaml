@@ -1,0 +1,8 @@
+namespace: demo-2
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+- pv.yaml
+- pvc.yaml
+
