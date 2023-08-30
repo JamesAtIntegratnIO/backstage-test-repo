@@ -12,7 +12,7 @@ metadata:
     github.com/project-slug: JamesAtIntegratnIO/backstage-test-repo
 spec:
   type: service
-  owner: user:default:jamesatintegratnio
+  owner: user:default/jamesatintegratnio
   lifecycle: experimental
   dependsOn:
     - component:python-sample-app
