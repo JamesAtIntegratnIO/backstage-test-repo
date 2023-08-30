@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: demo-6
+  labels:
+    app: demo-6
+  namespace: demo-6
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+    - demo-6.k8s.integratn.tech
+    secretName: demo-6-tls
+  rules:
+  - host: demo-6.k8s.integratn.tech
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: demo-6
+            port: 
+              name: http
