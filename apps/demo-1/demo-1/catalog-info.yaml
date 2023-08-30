@@ -10,6 +10,6 @@ metadata:
     backstage.io/kubernetes-label-selector: app=demo-1
     argocd/app-name: demo-1
 spec:
-  type: website
+  type: service
   owner: user:guest
   lifecycle: experimental
