@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: demo-1
+  namespace: argocd
+  labels:
+    app: demo-1
+  annotations: 
+    # argocd-image-updater.argoproj.io/write-back-method: kustomization
+    # argocd-image-updater.argoproj.io/git-branch: main
+    # argocd-image-updater.argoproj.io/image-list: python-sample-app
+spec:
+  project: infra
+  source:
+    repoURL: 
+    targetRevision: HEAD
+    path: apps/demo-1/demo-1
+  destination:
+    name: in-cluster
+    namespace: demo-1
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
