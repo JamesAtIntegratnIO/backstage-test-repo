@@ -11,5 +11,5 @@ metadata:
     argocd/app-name: demo-2
 spec:
   type: service
-  owner: user:guest
+  owner: user:default/jamesatintegratnio
   lifecycle: experimental
