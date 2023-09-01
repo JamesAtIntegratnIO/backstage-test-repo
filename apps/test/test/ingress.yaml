@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test
+  labels:
+    app: test
+  namespace: test
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+    - test.k8s.integratn.tech
+    secretName: test-tls
+  rules:
+  - host: test.k8s.integratn.tech
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: test
+            port: 
+              name: http

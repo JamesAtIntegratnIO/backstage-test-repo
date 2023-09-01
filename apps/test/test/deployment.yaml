@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  namespace: test
+  labels:
+    app: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: test
+        image: registry.k8s.integratn.tech/python-sample-app:latest
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: 200m
+          requests:
+            memory: 128Mi
+            cpu: 100m
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: test-pvc
+          mountPath: /app/data
+      volumes:
+      - name: test-pvc
+        persistentVolumeClaim:
+          claimName: test-pvc
