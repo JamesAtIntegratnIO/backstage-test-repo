@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: AskRegen
+  labels:
+    app: AskRegen
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: AskRegen
+    backstage.io/kubernetes-label-selector: app=AskRegen
+    argocd/app-name: AskRegen
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental

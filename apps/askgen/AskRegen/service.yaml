@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: AskRegen
+  namespace: askgen
+  labels:
+    app: AskRegen
+spec:
+  selector:
+    app: AskRegen
+  ports:
+  - name: http
+    protocol: TCP
+    port: 5000
+    targetPort: 5000
