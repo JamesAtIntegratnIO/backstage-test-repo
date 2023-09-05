@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: AskRegen
+  labels:
+    app: AskRegen
+  namespace: askgen
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+    - askregen.k8s.integratn.tech
+    secretName: askregen-tls
+  rules:
+  - host: askregen.k8s.integratn.tech
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: AskRegen
+            port: 
+              name: http

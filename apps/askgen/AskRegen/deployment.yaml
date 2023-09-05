@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: AskRegen
+  namespace: askgen
+  labels:
+    app: AskRegen
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: AskRegen
+  template:
+    metadata:
+      labels:
+        app: AskRegen
+    spec:
+      containers:
+      - name: AskRegen
+        image: registry.k8s.integratn.tech/python-sample-app:latest
+        resources:
+          limits:
+            memory: 1Gi
+            cpu: 200m
+          requests:
+            memory: 128Mi
+            cpu: 100m
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: AskRegen-pvc
+          mountPath: /app/data
+      volumes:
+      - name: AskRegen-pvc
+        persistentVolumeClaim:
+          claimName: AskRegen-pvc
