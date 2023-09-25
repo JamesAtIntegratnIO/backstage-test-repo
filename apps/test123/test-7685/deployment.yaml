@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-7685
+  namespace: test123
+  labels:
+    app: test-7685
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-7685
+  template:
+    metadata:
+      labels:
+        app: test-7685
+    spec:
+      containers:
+      - name: test-7685
+        image: registry.k8s.integratn.tech/python-sample-app:latest
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: 200m
+          requests:
+            memory: 128Mi
+            cpu: 100m
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: test-7685-pvc
+          mountPath: /app/data
+      volumes:
+      - name: test-7685-pvc
+        persistentVolumeClaim:
+          claimName: test-7685-pvc
