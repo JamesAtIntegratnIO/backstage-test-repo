@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-4235234
+  namespace: test-124812
+  labels:
+    app: test-4235234
+spec:
+  selector:
+    app: test-4235234
+  ports:
+  - name: http
+    protocol: TCP
+    port: 5000
+    targetPort: 5000
