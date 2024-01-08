@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-4235234
+  labels:
+    app: test-4235234
+  namespace: test-124812
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: "nginx"
+  tls:
+  - hosts:
+    - python-sample-app.k8s.integratn.tech
+    secretName: python-sample-app-tls
+  rules:
+  - host: python-sample-app.k8s.integratn.tech
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: test-4235234
+            port: 
+              name: http

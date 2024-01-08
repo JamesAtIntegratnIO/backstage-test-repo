@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: test-4235234
+  labels:
+    app: test-4235234
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: test-4235234
+    backstage.io/kubernetes-label-selector: app=test-4235234
+    argocd/app-name: test-4235234
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental
