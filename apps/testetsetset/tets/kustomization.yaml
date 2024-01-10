@@ -1,0 +1,8 @@
+namespace: testetsetset
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+- pv.yaml
+- pvc.yaml
+

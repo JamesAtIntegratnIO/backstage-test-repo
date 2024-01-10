@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tets
+  namespace: testetsetset
+  labels:
+    app: tets
+spec:
+  selector:
+    app: tets
+  ports:
+  - name: http
+    protocol: TCP
+    port: 5000
+    targetPort: 5000

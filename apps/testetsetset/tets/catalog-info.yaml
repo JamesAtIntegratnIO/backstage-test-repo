@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: tets
+  labels:
+    app: tets
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/kubernetes-id: tets
+    backstage.io/kubernetes-label-selector: app=tets
+    argocd/app-name: tets
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental
